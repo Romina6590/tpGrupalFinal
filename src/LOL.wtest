@@ -1,0 +1,52 @@
+import oleadasMinions.*
+import items.*
+import campeones.*
+
+describe "batalla contra oleadas"{
+	var jayce = new Campeon (puntosAtaque=15, puntosVida=50, acumDanio=0, items=[], bloqueo=0)
+	const oleada1 = new Oleada (cantMinion=10, nroOleada=1, plusDanio=25)
+  
+    test "primer batalla, el campeon muere" {
+     //equipa anillo
+     jayce.equipar(anilloDeDoran)
+     assert.equals([anilloDeDoran], jayce.items())
+     assert.equals(110, jayce.puntosVida())
+     assert.equals(30, jayce.puntosAtaque())
+     assert.equals(5, jayce.acumDanio())
+	 
+	 //equipa tomo
+	 jayce.equipar(tomoAmplificador)
+     assert.equals([anilloDeDoran, tomoAmplificador], jayce.items())
+     assert.equals(111.25, jayce.puntosVida())
+     assert.equals(30.25, jayce.puntosAtaque())
+     assert.equals(2, jayce.bloqueo())
+	 
+	 //ataca oleada
+     jayce.atacar(oleada1)
+     jayce.atacar(oleada1)
+     jayce.atacar(oleada1)
+     assert.equals(120, jayce.puntosVida())
+     assert.equals(32, jayce.puntosAtaque())
+     
+     //se desequipa anillo
+	 jayce.desequipar(anilloDeDoran)
+     assert.equals([tomoAmplificador], jayce.items())
+     assert.equals(60, jayce.puntosVida())
+     assert.equals(17, jayce.puntosAtaque())
+     assert.equals(30, jayce.acumDanio())
+	 
+	 //se desequipa tomo
+	 jayce.desequipar(tomoAmplificador)
+     assert.equals([], jayce.items())
+     assert.equals(60, jayce.puntosVida())
+     assert.equals(17, jayce.puntosAtaque())
+     assert.equals(60, jayce.acumDanio())
+     assert.equals(1, jayce.bloqueo())
+     
+     //kapuf
+     assert.that(jayce.seMuere())
+    
+    }
+    
+ 
+}
