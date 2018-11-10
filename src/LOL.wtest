@@ -3,48 +3,55 @@ import items.*
 import campeones.*
 
 describe "batalla contra oleadas"{
-	var jayce = new Campeon (puntosAtaque=15, puntosVida=50, acumDanio=0, items=[], bloqueo=0)
-	const oleada1 = new Oleada (cantMinion=10, nroOleada=1, plusDanio=25)
-  
-    test "primer batalla, el campeon muere" {
-     //equipa anillo
-     jayce.equipar(anilloDeDoran)
-     assert.equals([anilloDeDoran], jayce.items())
-     assert.equals(110, jayce.puntosVida())
-     assert.equals(30, jayce.puntosAtaque())
-     assert.equals(5, jayce.acumDanio())
-	 
-	 //equipa tomo
-	 jayce.equipar(tomoAmplificador)
-     assert.equals([anilloDeDoran, tomoAmplificador], jayce.items())
-     assert.equals(111.25, jayce.puntosVida())
-     assert.equals(30.25, jayce.puntosAtaque())
+	const jayce = new Campeon (baseAtaque=15, baseVida=50)
+	const oleada1 = new Oleada (cantMinion=25,nroOleada=1, plusDanio=5)
+    const anilloDeDoran = new ItemVidaAtaque()
+    const tomoAmplificador = new ItemBloqueo()
+    
+    fixture {
+	jayce.equipar(anilloDeDoran)
+	jayce.equipar(tomoAmplificador)
+	jayce.atacar(oleada1)
+    jayce.atacar(oleada1)
+    jayce.atacar(oleada1)
+
+
+}
+   
+	test "inventario de jayce y sus estadisticas"{
+     assert.equals(#{anilloDeDoran, tomoAmplificador}, jayce.items())
+     assert.equals(111.25, jayce.vidaTotal())
+     assert.equals(30.25, jayce.ataqueTotal())
      assert.equals(2, jayce.bloqueo())
-	 
-	 //ataca oleada
+}	 
+	 test "jayce ataca su primer oleada"{
+	 jayce.atacar(oleada1)
      jayce.atacar(oleada1)
      jayce.atacar(oleada1)
-     jayce.atacar(oleada1)
-     assert.equals(120, jayce.puntosVida())
-     assert.equals(32, jayce.puntosAtaque())
+     assert.equals(120, jayce.vidaTotal())
+     assert.equals(32, jayce.ataqueTotal())
+}     
      
-     //se desequipa anillo
-	 jayce.desequipar(anilloDeDoran)
-     assert.equals([tomoAmplificador], jayce.items())
-     assert.equals(60, jayce.puntosVida())
-     assert.equals(17, jayce.puntosAtaque())
-     assert.equals(30, jayce.acumDanio())
-	 
-	 //se desequipa tomo
+     test "jayce se desequipa el anillo y el tomo"{
+     jayce.atacar(oleada1)
+     jayce.atacar(oleada1)
+     jayce.atacar(oleada1)
+     assert.equals(1,jayce.danioAcumulado())
 	 jayce.desequipar(tomoAmplificador)
-     assert.equals([], jayce.items())
-     assert.equals(60, jayce.puntosVida())
-     assert.equals(17, jayce.puntosAtaque())
-     assert.equals(60, jayce.acumDanio())
-     assert.equals(1, jayce.bloqueo())
+     assert.equals(#{anilloDeDoran}, jayce.items())
      
-     //kapuf
-     assert.that(jayce.seMuere())
+     assert.equals(110, jayce.vidaTotal())
+     assert.equals(30, jayce.ataqueTotal())
+     assert.equals(70, jayce.danioAcumulado())
+     jayce.desequipar(anilloDeDoran)
+     assert.equals(#{}, jayce.items())
+     assert.equals(50, jayce.puntosVida())
+     assert.equals(30, jayce.puntosAtaque())
+     assert.equals(60, jayce.acumDanio())
+     
+}     
+     test "jayce se muere"{
+     assert.that(jayce.estoyMuerto())
     
     }
     

@@ -6,6 +6,6 @@ class Oleada{
 	var property plusDanio
 	
 	method meDefiendo(campeon){
-		campeon.acumDanio(campeon.acumDanio() + cantMinion + plusDanio)
+		campeon.danioAcumulado(campeon.danioAcumulado() + cantMinion + plusDanio)
 	}
 }

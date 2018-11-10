@@ -2,14 +2,23 @@ import items.*
 import oleadasMinions.*
 
 class Campeon {
-	var property puntosAtaque
-	var property puntosVida
-	var property acumDanio
-	var property items
-	var property bloqueo
+	const property baseAtaque
+	const property baseVida
+	var property plusAtaque = 0
+	var property plusVida = 0
+	var property danioAcumulado = 0
+	var property items = #{}
+	var property bloqueo = 0
 	
-	method seMuere(){
-		return puntosVida <= acumDanio
+ 	method vidaTotal(){
+		return baseVida + plusVida
+	}
+	
+	method ataqueTotal(){
+		return baseAtaque + plusAtaque
+	}
+	method estoyMuerto(){
+		return self.vidaTotal() <= danioAcumulado
 	}
 	
 	method equipar(item){
@@ -28,8 +37,7 @@ class Campeon {
 	method atacar(oleada){
 		if (self.bloqueo() == 0){
 			oleada.meDefiendo(self)
-			items.forEach{item=>item.actualizarEstadisticas(self)}
-			
+			items.forEach({item=>item.actualizarEstadisticas(self)})
 		}else{
 			bloqueo -= 1
 		}
