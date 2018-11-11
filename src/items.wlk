@@ -3,6 +3,7 @@ import campeones.*
 
 
 class Item {
+	var property precio
 	
 	method estoyEn(campeon){
 		return campeon.items().any{item=>item == self}
@@ -18,6 +19,9 @@ class Item {
 	method actualizarEstadisticas(campeon){
 		
 	}
+	method habilidadActivable(campeon){
+		
+	}
 	
 }
 
@@ -31,16 +35,17 @@ class ItemVidaAtaque inherits Item{
 	override method meDesequipa(campeon){
 		campeon.plusAtaque(campeon.plusAtaque() - 15)
 		campeon.plusVida(campeon.plusVida() - 60)
-		campeon.danioAcumulado(campeon.danioAcumulado() - 5)
+		campeon.danioAcumulado(campeon.danioAcumulado() - 10)
 	}
 	
 	
 }
 		
 class ItemBloqueo inherits  Item{
-	
+	var property usosHabilidad
 	var property danioAlEquipar=0
-	 override method meEquipa(campeon){
+	 
+	override method meEquipa(campeon){
 		
 			campeon.plusAtaque(campeon.plusAtaque() + campeon.danioAcumulado() * 0.05)
 			campeon.plusVida(campeon.plusVida() + campeon.danioAcumulado() * 0.25)
@@ -61,12 +66,19 @@ class ItemBloqueo inherits  Item{
 		campeon.plusVida(campeon.plusVida() + campeon.danioAcumulado() * 0.25)
 			
 	}
+	override method habilidadActivable(campeon){
+		if(usosHabilidad>0&& campeon.cantDinero()<500){
+			usosHabilidad-=1
+			campeon.cantDinero(500)
+		}
+	}
 }
 
-class ItemVariante inherits Item {
-	var property danioAlEquipar=0
-	override method estoyEn(campeon){
-		return campeon.items().any{item=>item == self}
+class ItemVariante inherits ItemBloqueo {
+	
+	
+	override method precio(){
+		return super()+100
 	}
 	
 	override method meEquipa(campeon){
@@ -76,11 +88,28 @@ class ItemVariante inherits Item {
 		campeon.danioAcumulado(campeon.danioAcumulado() + 5)
 		
 	}
+	override method meDesequipa(campeon){
+		
+	}
 	override method actualizarEstadisticas(campeon){
 		campeon.plusVida(campeon.plusVida() - danioAlEquipar * 0.25+5)
 		campeon.plusVida(campeon.plusVida() + campeon.danioAcumulado() * 0.25+5)
 			
 	}
+	override method habilidadActivable(campeon){
+		
+	}
 	
+
 } 
+
+class Pocion inherits Item{
+	var property usosHabilidad
+	override method habilidadActivable(campeon){
+		if(usosHabilidad>0){
+			campeon.danioAcumulado(campeon.danioAcumulado()-50)
+	    }
+	    
+	 }
+}
 

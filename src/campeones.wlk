@@ -9,6 +9,7 @@ class Campeon {
 	var property danioAcumulado = 0
 	var property items = #{}
 	var property bloqueo = 0
+	var property cantDinero=0
 	
  	method vidaTotal(){
 		return baseVida + plusVida
@@ -33,15 +34,37 @@ class Campeon {
 		
 		}
 	}
-	
-	method atacar(oleada){
-		if (self.bloqueo() == 0){
-			oleada.meDefiendo(self)
-			items.forEach({item=>item.actualizarEstadisticas(self)})
+	method ganarOro(oleada){
+		if(self.ataqueTotal()<=oleada.cantMinion()){
+			cantDinero+=self.ataqueTotal()
 		}else{
-			bloqueo -= 1
+			cantDinero+=oleada.cantMinion()
 		}
 	}
 	
+	method atacar(oleada){
+		self.ganarOro(oleada)
+		if (self.bloqueo() == 0){
+			oleada.meDefiendo(self)
+			oleada.meAtaca(self)
+			items.forEach({item=>item.actualizarEstadisticas(self)})
+		}else{
+			bloqueo -= 1
+			oleada.meAtaca(self)
+		}
+	}
 	
+	method comprar(item){
+		if(cantDinero>=item.precio()){
+			self.equipar(item)
+			cantDinero-=item.precio()
+		}
+	}
+	method vender(item){
+		cantDinero+=item.precio()/2
+		self.desequipar(item)
+	}
+	method usarHabilidad(item){
+		item.habilidadActivable(self)
+	}
 }

@@ -8,7 +8,15 @@ class Oleada{
 	var property plusDanio
 	
 	method meDefiendo(campeon){
-		campeon.danioAcumulado(campeon.danioAcumulado() + cantMinion + plusDanio)
+		if(not self.estoyMuerta()){
+			campeon.danioAcumulado(campeon.danioAcumulado() + cantMinion + plusDanio)	
+		}
+	}
+	method meAtaca(campeon){
+		cantMinion-=campeon.ataqueTotal()
+	}
+	method estoyMuerta(){
+		return cantMinion<=0
 	}
 }
 

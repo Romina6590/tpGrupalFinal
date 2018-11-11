@@ -56,10 +56,14 @@ Realizar, como mínimo, el siguiente test:
 * Hacer que el campeón ataque a la oleada de minions tres veces.
 * Hacer que se desequipe, primero el Tomo Amplificador, y después el Anillo.
 * Probar que el campeón esta muerto tras haberse desequipado ambos ítems.
+<<<<<<< HEAD
 =======
 * Crear una Oleada de 10 minions con un plus de 5 puntos de daño.
 * Hacer que el campeón ataque a la oleada de minions, se saque el anillo de doran  y luego se desequipe el Tomo Amplificador. 
 * Probar que el campeón esta muerto tras haberse desequipado el tomo. 
+>>>>>>> branch 'master' of https://github.com/obj1unq-2018s2/tp-cuatrimestral-obj1-tp1-fraga-polesel.git
+=======
+>>>>>>> branch 'master' of https://github.com/obj1unq/tp-cuatrimestral-2018s2-liga-de-leyendas.git
 >>>>>>> branch 'master' of https://github.com/obj1unq-2018s2/tp-cuatrimestral-obj1-tp1-fraga-polesel.git
 
 
@@ -101,7 +105,8 @@ Al comprar un item, si tengo el dinero para comprarlo, gasto el dinero y me equi
 Al vender un item, gano la mitad del dinero de su precio y desequipo el item.  
 
 Al atacar a una oleada de minions, un campeón gana una cantidad de dinero igual a la cantidad de minions eliminados de la oleada.  
-**Atención**: la cantidad de minions que quedan eliminados puede ser distinta a los puntos de ataque del campeón. P.ej. si un campeón con 50 puntos de ataque ataca a una oleada de 20 minions, el dinero que gana es 20, no 50.  
+**Atención**: la cantidad de minions que quedan eliminados puede ser distinta a los puntos de ataque del campeón. P.ej. 
+si un campeón con 50 puntos de ataque ataca a una oleada de 20 minions, el dinero que gana es 20, no 50.  
 
 
 ### Modificaciones a los items equipables
@@ -113,7 +118,8 @@ una habilidad que se puede activar en cualquier momento, según la siguiente des
 * **Tomo Amplificador:** Cuesta 500 y su habilidad activable consiste en que, cuando el campeón posee menos de 500 de dinero, automáticamente transforma su dinero en 500. Sólo puede ser usada una vez.
 
 * **Sombrero de Rabadon:** Cuesta 100 más que un Tomo Amplificador, no posee habilidad activable.  
-	**¡OJO!** no vale poner "600", hay que poner "100 más que un (nuevo) Tomo Amplificador", de forma tal que si por alguna razón el precio del Tomo aumenta a 700, el del Sombrero aumente _automáticamente_ a 800.
+	**¡OJO!** no vale poner "600", hay que poner "100 más que un (nuevo) Tomo Amplificador", de forma tal que si por alguna razón el precio del Tomo aumenta a 700,
+	 el del Sombrero aumente _automáticamente_ a 800.
 
 También se pide agregar un nuevo objeto: 
 
