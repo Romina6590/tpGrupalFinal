@@ -7,7 +7,8 @@ No habrá, al menos de momento, batallas entre campeones (conocidas popularmente
 
 Las batallas están basadas en un sistema simple de ataque y defensa. 
 Cuando un campeón ataca le produce una daño a la oleada de minions igual a los puntos de ataque que posee el campeón. 
-Sin embargo, éste recibe a su vez un daño, producido por los minions que se defienden. El daño es igual a la cantidad de minions que conforman la oleada más un plus que es definido en cada oleada.
+Sin embargo, éste recibe a su vez un daño, producido por los minions que se defienden. 
+El daño es igual a la cantidad de minions que conforman la oleada más un plus que es definido en cada oleada.
 
 Parte 1: 
 --------
@@ -26,7 +27,8 @@ Los campeones pueden equiparse o desequiparse items.
 Esto tiene dos consecuencias:
 1. Los items, al ser equipados o desequipados en el campeón, producen un efecto en el campeón (que puede ser tanto positivo como negativo). 
 2. Cada item brinda, al campeón que lo tiene equipado, una cantidad de puntos de ataque y otra de puntos vida extra. 
-Por lo tanto, para calcular el ataque o la vida de un campeón, debe considerarse la suma entre los puntos base propios del campeón más los que aportan los items que posee equipados.
+Por lo tanto, para calcular el ataque o la vida de un campeón, debe considerarse la suma entre los puntos 
+base propios del campeón más los que aportan los items que posee equipados.
 
 Considerar los siguientes items que el campeón podría equiparse:
 * **Anillo de Doran:** Aporta 60 puntos de vida y 15 de ataque. 
@@ -35,7 +37,8 @@ Al equiparse, el campeón recibe 5 puntos de daño y, al desequiparse, recupera 
 * **Tomo Amplificador:** Aporta el 25% de los puntos de daño total recibido por el campeón como puntos de vida y el 5% del daño total como puntos de ataque. 
 Al equiparse otorga dos bloqueos al campeón, pero al desequiparse otorga 1 bloqueo y recibe 30 puntos de daño.
 
-* **Sombrero de Rabadon:** Es una variante del Tomo Amplificador. Aporta 5 puntos más de vida que un Tomo Amplificador, y el doble de los puntos de ataque base del campeón (o sea, algo distinto de lo que aporta el Tomo Amplificador). 
+* **Sombrero de Rabadon:** Es una variante del Tomo Amplificador. Aporta 5 puntos más de vida que un Tomo Amplificador,
+ y el doble de los puntos de ataque base del campeón (o sea, algo distinto de lo que aporta el Tomo Amplificador). 
 Al equiparse, hace lo mismo que un Tomo Amplificador pero el campeón ademas recibe 5 puntos extra de daño. Al desequiparse, no hace nada.
 
 
@@ -48,10 +51,16 @@ Realizar, como mínimo, el siguiente test:
 
 * Crear un campeón con 50 puntos de vida y 15 de ataque. 
 * Equiparlo con un anillo de Doran y un Tomo Amplificador. 
+<<<<<<< HEAD
 * Crear una Oleada de 10 minions **con un plus de 25 puntos de daño**.
 * Hacer que el campeón ataque a la oleada de minions tres veces.
 * Hacer que se desequipe, primero el Tomo Amplificador, y después el Anillo.
 * Probar que el campeón esta muerto tras haberse desequipado ambos ítems.
+=======
+* Crear una Oleada de 10 minions con un plus de 5 puntos de daño.
+* Hacer que el campeón ataque a la oleada de minions, se saque el anillo de doran  y luego se desequipe el Tomo Amplificador. 
+* Probar que el campeón esta muerto tras haberse desequipado el tomo. 
+>>>>>>> branch 'master' of https://github.com/obj1unq-2018s2/tp-cuatrimestral-obj1-tp1-fraga-polesel.git
 
 
 Parte 2:
