@@ -3,9 +3,8 @@ import campeones.*
 
 
 class Oleada{
-	var property cantMinion
-	var property nroOleada
-	var property plusDanio
+	var property cantMinion = null
+	var property plusDanio = null
 	
 	method meDefiendo(campeon){
 		if(not self.estoyMuerta()){
@@ -21,19 +20,29 @@ class Oleada{
 
 }
 
+//parte individual
 class EjercitoDeMinions inherits Oleada{
 	var property oleadas
-	override method estaMuerta(){
+	override method estoyMuerta(){
 		return oleadas.all{oleada=>oleada.estoyMuerta()}
 	}
 	
-	method reciboDanio(campeon){
-		return oleadas.forEach{oleada=>oleada.meAtaca(campeon)}
+	override method meDefiendo(campeon){
+		 oleadas.forEach{oleada=>oleada.meDefiendo(campeon)}
 	}
 	
-	method provocoDanio(campeon){
-		return oleadas.forEach{oleada=>oleada.meDefiendo(campeon)}
+	override method meAtaca(campeon){
+		oleadas.forEach{oleada=>oleada.meAtaca(campeon)}
 	}
+	
+	override method cantMinion(){
+		return oleadas.sum{oleada=>oleada.cantMinion()}
+	}
+	
+	override method plusDanio(){
+		return oleadas.sum{oleada=>oleada.plusDanio()}
+	}
+	
 	
 }
 

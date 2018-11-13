@@ -4,9 +4,9 @@ import campeones.*
 
 describe "batalla contra oleadas"{
 	const jayce = new Campeon (baseAtaque=15, baseVida=50, cantDinero=850)
-	const oleada1 = new Oleada (cantMinion=10,nroOleada=1, plusDanio=25)
-	const oleada2 = new Oleada (cantMinion=50,nroOleada=2, plusDanio=0)
-	const oleada3 = new Oleada (cantMinion=100,nroOleada=3, plusDanio=0)
+	const oleada1 = new Oleada (cantMinion=10, plusDanio=25)
+	const oleada2 = new Oleada (cantMinion=50, plusDanio=0)
+	const oleada3 = new Oleada (cantMinion=100, plusDanio=0)
     const anilloDeDoran = new ItemVidaAtaque(precio=300)
     const tomoAmplificador = new ItemBloqueo(precio=500,usosHabilidad=1)
     const pocionVida = new Pocion(precio=50,usosHabilidad=2)

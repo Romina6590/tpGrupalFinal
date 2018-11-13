@@ -4,14 +4,16 @@ import oleadasMinions.*
 
 describe "campeon contra ejercito de minions"{
   const irelia = new Campeon (baseAtaque=20,baseVida=50,cantDinero=300)
-  const oleada1= new Oleada (cantMinion=20,nroOleada=1,plusDanio=5)
-  const oleada2= new Oleada (cantMinion=10,nroOleada=2,plusDanio=15)
+  const oleada1= new Oleada (cantMinion=20,plusDanio=5)
+  const oleada2= new Oleada (cantMinion=10,plusDanio=15)
   const ejercitoMinions1= new EjercitoDeMinions (oleadas=#{oleada1,oleada2})
   
+  
+  
   test "irelia ataca ejercito y ambos mueren" {
-    irelia.atacarEjercito(ejercitoMinions1)
+    irelia.atacar(ejercitoMinions1)
     assert.that(irelia.estoyMuerto())
-    assert.that(ejercitoMinions1.estaMuerto())
+    assert.that(ejercitoMinions1.estoyMuerta())
 	
 
   }
