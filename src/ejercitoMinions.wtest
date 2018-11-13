@@ -9,13 +9,23 @@ describe "campeon contra ejercito de minions"{
   const ejercitoMinions1= new EjercitoDeMinions (oleadas=#{oleada1,oleada2})
   
   
+  test "cantidad de minions en el ejercito"{
+  	assert.equals(30,ejercitoMinions1.cantMinion())
+  }
   
-  test "irelia ataca ejercito y ambos mueren" {
-    irelia.atacar(ejercitoMinions1)
+  test "plus de danio total del ejercito"{
+  	assert.equals(20,ejercitoMinions1.plusDanio())
+  }
+  test "compruebo que despues del ataque tanto irelia como el ejercito estan muertos" {
+  	irelia.atacar(ejercitoMinions1)
     assert.that(irelia.estoyMuerto())
     assert.that(ejercitoMinions1.estoyMuerta())
-	
-
   }
+  
+  test "cantidad de dinero que tiene irelia despues del ataque"{
+  	irelia.atacar(ejercitoMinions1)
+  	assert.equals(330,irelia.cantDinero())
+  }
+	
 
 }

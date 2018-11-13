@@ -38,16 +38,13 @@ class Campeon {
 		
 		}
 	}
-	method ganarOro(oleada){
-		if(self.ataqueTotal()<=oleada.cantMinion()){
-			cantDinero+=self.ataqueTotal()
-		}else{
-			cantDinero+=oleada.cantMinion()
-		}
+	method reciboDineroDe(oleada){
+		  cantDinero += oleada.cuantoOroDoyA(self)
 	}
-	
+
+    	
 	method atacar(oleada){
-		self.ganarOro(oleada)
+		self.reciboDineroDe(oleada)
 		if (self.bloqueo() == 0){
 			oleada.meDefiendo(self)
 			oleada.meAtaca(self)
