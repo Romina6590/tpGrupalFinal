@@ -45,6 +45,7 @@ describe "batalla contra oleadas"{
 }     
      
      test"habilidades activables"{
+     
      jayce.atacar(oleada2)
      jayce.atacar(oleada3)
      jayce.usarHabilidad(pocionVida)

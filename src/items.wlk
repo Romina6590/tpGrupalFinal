@@ -1,5 +1,7 @@
 import campeones.*
 
+
+
 class Item {
 	var property precio
 	
@@ -14,61 +16,62 @@ class Item {
 	method meDesequipa(campeon){
 		
 	}
-	method actualizarEstadisticas(campeon){
-		
-	}
+	
 	method habilidadActivable(campeon){
 		
+	}
+	method bonusAtaque(campeon){
+		return 0
+	}
+	method bonusVida(campeon){
+		return 0
 	}
 	
 }
 
 class ItemVidaAtaque inherits Item{
 	override method meEquipa(campeon){
-		campeon.plusAtaque(campeon.plusAtaque() + 15)
-		campeon.plusVida(campeon.plusVida() + 60)
 		campeon.danioAcumulado(campeon.danioAcumulado() + 5)
 		
 	}
 	override method meDesequipa(campeon){
-		campeon.plusAtaque(campeon.plusAtaque() - 15)
-		campeon.plusVida(campeon.plusVida() - 60)
 		campeon.danioAcumulado(campeon.danioAcumulado() - 10)
 	}
-	
+	override method bonusAtaque(campeon){
+		return 15
+	}
+	override method bonusVida(campeon){
+		return 60
+	}
 	
 }
 		
 class ItemBloqueo inherits  Item{
 	var property usosHabilidad
-	var property danioAlEquipar=0
-	 
 	override method meEquipa(campeon){
-		
-			campeon.plusAtaque(campeon.plusAtaque() + campeon.danioAcumulado() * 0.05)
-			campeon.plusVida(campeon.plusVida() + campeon.danioAcumulado() * 0.25)
-			danioAlEquipar=campeon.danioAcumulado()
-			campeon.bloqueo(campeon.bloqueo() + 2)
+		campeon.bloqueo(campeon.bloqueo() + 2)
 	}
 	
 	override method meDesequipa(campeon){
-		campeon.plusVida(campeon.plusVida() - campeon.danioAcumulado() * 0.25)
-		campeon.plusAtaque(campeon.plusAtaque() - campeon.danioAcumulado() * 0.05)
 		campeon.danioAcumulado(campeon.danioAcumulado() + 30)
 		campeon.bloqueo(campeon.bloqueo() + 1)
 	}
-	override method actualizarEstadisticas(campeon){
-		campeon.plusVida(campeon.plusVida() - danioAlEquipar * 0.25)
-		campeon.plusAtaque(campeon.plusAtaque() - danioAlEquipar * 0.05)
-		campeon.plusAtaque(campeon.plusAtaque() + campeon.danioAcumulado() * 0.05)
-		campeon.plusVida(campeon.plusVida() + campeon.danioAcumulado() * 0.25)
-			
-	}
+	
 	override method habilidadActivable(campeon){
 		if(usosHabilidad>0&& campeon.cantDinero()<500){
 			usosHabilidad-=1
 			campeon.cantDinero(500)
 		}
+	}
+	override method bonusAtaque(campeon){
+		
+		return campeon.danioAcumulado() *0.05
+		
+	}
+	override method bonusVida(campeon){
+	
+		return campeon.danioAcumulado() *0.25
+		
 	}
 }
 
@@ -80,8 +83,6 @@ class ItemVariante inherits ItemBloqueo {
 	}
 	
 	override method meEquipa(campeon){
-		campeon.plusVida(campeon.plusVida() + campeon.danioAcumulado() * 0.25 + 5)
-		campeon.plusAtaque(campeon.plusAtaque() + campeon.baseAtaque() * 2)
 		campeon.bloqueo(campeon.bloqueo() + 2)
 		campeon.danioAcumulado(campeon.danioAcumulado() + 5)
 		
@@ -89,23 +90,63 @@ class ItemVariante inherits ItemBloqueo {
 	override method meDesequipa(campeon){
 		
 	}
-	override method actualizarEstadisticas(campeon){
-		campeon.plusVida(campeon.plusVida() - danioAlEquipar * 0.25+5)
-		campeon.plusVida(campeon.plusVida() + campeon.danioAcumulado() * 0.25+5)
-			
+	
+	override method bonusVida(campeon){
+		return super(campeon)+5
+	
 	}
-	override method habilidadActivable(campeon){
-		
+	override method bonusAtaque(campeon){
+		return campeon.baseAtaque()*2
 	}
 	
+
 } 
 
 class Pocion inherits Item{
 	var property usosHabilidad
 	override method habilidadActivable(campeon){
-		if(usosHabilidad>0){
+		if(usosHabilidad>0&&campeon.danioAcumulado()>50){
+			usosHabilidad-=1
 			campeon.danioAcumulado(campeon.danioAcumulado()-50)
+	    }else if(usosHabilidad>0){
+	    	usosHabilidad-=1
+	    	campeon.danioAcumulado(0)
 	    }
 	    
 	 }
+	 
+}
+//parte individual
+class ItemDelVacio inherits Item{
+	
+	var property materiales=[]
+	
+	
+	override method habilidadActivable(campeon){
+		materiales.forEach({item=>item.habilidadActivable(campeon)})
+	}
+
+	override method bonusVida(campeon){
+		return materiales.sum({item=>item.bonusVida(campeon)})/2
+	}
+	override method bonusAtaque(campeon){
+		return materiales.sum({item=>item.bonusAtaque(campeon)})
+	}
+	method agregarDesdeInventario(item,campeon){
+		materiales.add(item)
+		item.meDesequipa(campeon)
+		self.meEquipa(campeon)
+	}
+	method agregarDesdeAfueraInventario(item,campeon){
+		materiales.add(item)
+		self.meEquipa(campeon)
+	}
+	method agregarMaterialSi(item,campeon){
+		if(campeon.items().contains(item)){
+			self.agregarDesdeInventario(item,campeon)
+		}else{
+			self.agregarDesdeAfueraInventario(item,campeon)
+		}
+	}
+	
 }

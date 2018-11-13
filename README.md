@@ -52,15 +52,19 @@ Realizar, como mínimo, el siguiente test:
 * Crear un campeón con 50 puntos de vida y 15 de ataque. 
 * Equiparlo con un anillo de Doran y un Tomo Amplificador. 
 <<<<<<< HEAD
-* Crear una Oleada de 10 minions con un plus de 5 puntos de daño.
-* Hacer que el campeón ataque a la oleada de minions, se saque el anillo de doran  y luego se desequipe el Tomo Amplificador. 
-* Probar que el campeón esta muerto tras haberse desequipado el tomo. 
-=======
 * Crear una Oleada de 10 minions **con un plus de 25 puntos de daño**.
 * Hacer que el campeón ataque a la oleada de minions tres veces.
 * Hacer que se desequipe, primero el Tomo Amplificador, y después el Anillo.
 * Probar que el campeón esta muerto tras haberse desequipado ambos ítems.
+<<<<<<< HEAD
+=======
+* Crear una Oleada de 10 minions con un plus de 5 puntos de daño.
+* Hacer que el campeón ataque a la oleada de minions, se saque el anillo de doran  y luego se desequipe el Tomo Amplificador. 
+* Probar que el campeón esta muerto tras haberse desequipado el tomo. 
+>>>>>>> branch 'master' of https://github.com/obj1unq-2018s2/tp-cuatrimestral-obj1-tp1-fraga-polesel.git
+=======
 >>>>>>> branch 'master' of https://github.com/obj1unq/tp-cuatrimestral-2018s2-liga-de-leyendas.git
+>>>>>>> branch 'master' of https://github.com/obj1unq-2018s2/tp-cuatrimestral-obj1-tp1-fraga-polesel.git
 
 
 Parte 2:
@@ -136,9 +140,11 @@ En el momento de la entrega, obtendrán dos calificaciones, una grupal y la otra
 Soporte
 -------
 
-Agregar los _soportes_. Un soporte se comporta de manera similar a un campeón pero no puede andar sólo, debe vincularse con un campeón, aunque puede cambiar de vínculo cuando lo desee.
+Agregar los _soportes_. Un soporte se comporta de manera similar a un campeón pero no puede andar sólo, debe vincularse con un campeón, aunque puede cambiar de vínculo
+ cuando lo desee.
 Cada vez que ataca, reduce en 10 puntos el daño total que posee el campeón. 
-Un soporte _agrega_ a su inventario, los items que tenga el campeón al que se presta como soporte. Esto sirve para lo que aporta cada item en ataque y vida; **no incluye** las consecuencias de equiparse, desequiparse y activar la habilidad activable.     
+Un soporte _agrega_ a su inventario, los items que tenga el campeón al que se presta como soporte. Esto sirve para lo que aporta cada item en ataque y vida; 
+**no incluye** las consecuencias de equiparse, desequiparse y activar la habilidad activable.     
 Por otro lado, un soporte tiene sus propios items, que compra con su dinero. Estos items no se agregan al inventario del campeón, es _solamente_ en el otro sentido. 
 
 > TIP: Considere usar el metodo inventario(), en vez de usar el atributo inventario en cada lugar que se use en la clase Campeon.

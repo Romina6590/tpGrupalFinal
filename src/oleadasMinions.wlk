@@ -1,5 +1,7 @@
 import campeones.*
 
+
+
 class Oleada{
 	var property cantMinion
 	var property nroOleada
@@ -16,6 +18,7 @@ class Oleada{
 	method estoyMuerta(){
 		return cantMinion<=0
 	}
+<<<<<<< HEAD
 }
 
 class EjercitoDeMinions inherits Oleada{
@@ -33,3 +36,7 @@ class EjercitoDeMinions inherits Oleada{
 	}
 	
 }
+=======
+}
+
+>>>>>>> branch 'master' of https://github.com/obj1unq-2018s2/tp-cuatrimestral-obj1-tp1-fraga-polesel.git
