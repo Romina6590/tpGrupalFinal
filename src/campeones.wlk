@@ -54,6 +54,17 @@ class Campeon {
 		}
 	}
 	
+	method atacarEjercito(ejercito){
+		if(self.bloqueo()==0){
+			ejercito.provocoDanio(self)
+			ejercito.reciboDanio(self)
+			items.forEach({item=>item.actualizarEstadisticas(self)})
+		}else{
+			bloqueo -= 1
+			ejercito.reciboDanio(self)
+		}
+	}
+	
 	method comprar(item){
 		if(cantDinero>=item.precio()){
 			self.equipar(item)

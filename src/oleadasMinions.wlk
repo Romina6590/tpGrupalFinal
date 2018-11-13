@@ -17,3 +17,19 @@ class Oleada{
 		return cantMinion<=0
 	}
 }
+
+class EjercitoDeMinions inherits Oleada{
+	var property oleadas
+	override method estaMuerta(){
+		return oleadas.all{oleada=>oleada.estoyMuerta()}
+	}
+	
+	method reciboDanio(campeon){
+		return oleadas.forEach{oleada=>oleada.meAtaca(campeon)}
+	}
+	
+	method provocoDanio(campeon){
+		return oleadas.forEach{oleada=>oleada.meDefiendo(campeon)}
+	}
+	
+}

@@ -126,7 +126,9 @@ También se pide agregar un nuevo objeto:
 Parte Individual:
 ----------------
 
-> IMPORTANTE: A continuación se describen tres tareas. Cada integrante del grupo debera elegir una de ellas. Todos deberán continuar trabajando sobre el mismo repositorio, coordinando para que cada une pueda realizar su parte. En el momento de la entrega, obtendrán dos calificaciones, una grupal y la otra individual.
+> IMPORTANTE: A continuación se describen tres tareas. Cada integrante del grupo debera elegir una de ellas. 
+Todos deberán continuar trabajando sobre el mismo repositorio, coordinando para que cada une pueda realizar su parte. 
+En el momento de la entrega, obtendrán dos calificaciones, una grupal y la otra individual.
 >
 > En caso de que existan grupos de menos de 3 integrantes, cada integrante debe elegir sólo una tarea (y quedará una tarea sin resolver).
 
@@ -191,7 +193,8 @@ Ejército de Minions:
 
 Crear la clase Ejercito de minions, que tiene un comportamiento similar a una Oleada, pero que esta compuesta por muchas oleadas de Minions.
 Un ejercito de Minions esta muerto cuando todas sus oleadas estan muertas.
-Cuando un ejército de Minions recibe daño, todas sus oleadas reciben el mismo daño; análogamente, cuando una oleada de minions provoca daño, todas las oleadas le provocaran el mismo daño al campeón que si atacaran por separado.
+Cuando un ejército de Minions recibe daño, todas sus oleadas reciben el mismo daño; 
+análogamente, cuando una oleada de minions provoca daño, todas las oleadas le provocaran el mismo daño al campeón que si atacaran por separado.
 
 Crear el siguiente test:
 
