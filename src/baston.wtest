@@ -1,0 +1,28 @@
+import campeones.*
+import items.*
+
+
+describe "baston del vacio" {
+
+	const shaco = new Campeon (baseAtaque=15, baseVida=50, cantDinero=800)
+	const anilloDeDoran = new ItemVidaAtaque(precio=300)
+    const sombreroRabadon = new ItemVariante(precio=500,usosHabilidad=1)
+    const pocionVida = new Pocion(precio=50,usosHabilidad=2)
+    const bastonDelVacio=new ItemDelVacio(precio=0)
+    
+    fixture{
+    	shaco.comprar(anilloDeDoran)
+    	shaco.comprar(anilloDeDoran)
+    	shaco.comprar(bastonDelVacio)
+    	bastonDelVacio.agregarMaterialSi(pocionVida,shaco)
+    	bastonDelVacio.agregarMaterialSi(sombreroRabadon,shaco)
+    	shaco.usarHabilidad(bastonDelVacio)
+    }
+    test"danio recibido"{
+    	assert.equals(0,shaco.danioAcumulado())
+    	
+    }
+    test " dinero "{
+    	assert.equals(500,shaco.cantDinero())
+    }
+}

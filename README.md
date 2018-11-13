@@ -138,9 +138,11 @@ Parte Individual:
 Soporte
 -------
 
-Agregar los _soportes_. Un soporte se comporta de manera similar a un campeón pero no puede andar sólo, debe vincularse con un campeón, aunque puede cambiar de vínculo cuando lo desee.
+Agregar los _soportes_. Un soporte se comporta de manera similar a un campeón pero no puede andar sólo, debe vincularse con un campeón, aunque puede cambiar de vínculo
+ cuando lo desee.
 Cada vez que ataca, reduce en 10 puntos el daño total que posee el campeón. 
-Un soporte _agrega_ a su inventario, los items que tenga el campeón al que se presta como soporte. Esto sirve para lo que aporta cada item en ataque y vida; **no incluye** las consecuencias de equiparse, desequiparse y activar la habilidad activable.     
+Un soporte _agrega_ a su inventario, los items que tenga el campeón al que se presta como soporte. Esto sirve para lo que aporta cada item en ataque y vida; 
+**no incluye** las consecuencias de equiparse, desequiparse y activar la habilidad activable.     
 Por otro lado, un soporte tiene sus propios items, que compra con su dinero. Estos items no se agregan al inventario del campeón, es _solamente_ en el otro sentido. 
 
 > TIP: Considere usar el metodo inventario(), en vez de usar el atributo inventario en cada lugar que se use en la clase Campeon.
